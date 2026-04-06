@@ -160,3 +160,56 @@ button:hover{
 .card strong{
   color:var(--text);
 }
+/* Botón historial */
+.history-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Panel lateral */
+.history-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: #1e1e2f;
+  color: white;
+  padding: 20px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Oculto */
+.history-panel.hidden {
+  transform: translateX(100%);
+}
+
+/* Lista */
+#historyList {
+  list-style: none;
+  padding: 0;
+}
+
+#historyList li {
+  padding: 8px;
+  margin: 5px 0;
+  background: #2c2c3c;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#historyList li:hover {
+  background: #ff3b3b;
+}

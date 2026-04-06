@@ -37,12 +37,14 @@ async function fetchPokemon(nombre) {
 
     const data = await res.json();
     renderPokemon(data);
+    addToHistory(data.name);
 
   } catch (e) {
     error.textContent = 'Pokémon no encontrado';
   } finally {
     loading.classList.add('hidden');
   }
+
 }
 
 function renderPokemon(pokemon) {
@@ -65,3 +67,51 @@ function limpiar() {
   error.textContent = '';
   result.innerHTML = '';
 }
+const historyPanel = document.getElementById("historyPanel");
+const historyList = document.getElementById("historyList");
+const toggleHistory = document.getElementById("toggleHistory");
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+// Mostrar / ocultar panel
+toggleHistory.addEventListener("click", () => {
+  historyPanel.classList.toggle("hidden");
+});
+
+// Agregar al historial
+function addToHistory(name) {
+  if (!name) return;
+
+  history = history.filter(p => p !== name); // evita duplicados
+  history.unshift(name);
+
+  if (history.length > 10) history.pop();
+
+  localStorage.setItem("history", JSON.stringify(history));
+  renderHistory();
+}
+
+// Renderizar lista
+function renderHistory() {
+  historyList.innerHTML = "";
+
+  if (history.length === 0) {
+    historyList.innerHTML = "<li style='opacity:0.6'>Sin búsquedas</li>";
+    return;
+  }
+
+  history.forEach(pokemon => {
+    const li = document.createElement("li");
+    li.textContent = pokemon;
+
+    li.addEventListener("click", () => {
+      input.value = pokemon;
+      buscarPokemon();
+    });
+
+    historyList.appendChild(li);
+  });
+}
+
+// Inicializar
+renderHistory();

@@ -1,7 +1,3 @@
-Perfecto, acá tenés un **README.md completo** listo para copiar y pegar:
-
----
-
 # 🧾 Mini Pokédex
 
 Aplicación web simple desarrollada con HTML, CSS y JavaScript puro que permite buscar Pokémon por nombre utilizando la API pública de PokéAPI.
@@ -100,12 +96,3 @@ De este endpoint se obtienen:
 * ✔ validación de input
 * ✔ código organizado en funciones
 * ✔ sin frameworks
-
----
-
-Si querés, después te puedo ayudar a agregarle:
-
-* historial de búsquedas
-* favoritos
-* búsqueda con autocompletado
-* o animaciones más pro 🚀
