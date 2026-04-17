@@ -4,10 +4,11 @@ const result = document.getElementById('result');
 const loading = document.getElementById('loading');
 const error = document.getElementById('error');
 
-// Buscar con botón
+//BUSCAR 1
 button.addEventListener('click', buscar);
 
-// Buscar con Enter
+
+//BUSCAR 2
 input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') buscar();
 });
@@ -28,7 +29,7 @@ async function fetchPokemon(nombre) {
   loading.classList.remove('hidden');
 
   try {
-    // Delay para que se vea el loading
+    //DELAY A PROPOSITO
     await new Promise(res => setTimeout(res, 1500));
 
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
@@ -73,16 +74,16 @@ const toggleHistory = document.getElementById("toggleHistory");
 
 let history = JSON.parse(localStorage.getItem("history")) || [];
 
-// Mostrar / ocultar panel
+//PANEL
 toggleHistory.addEventListener("click", () => {
   historyPanel.classList.toggle("hidden");
 });
 
-// Agregar al historial
+//HISTORIAL
 function addToHistory(name) {
   if (!name) return;
 
-  history = history.filter(p => p !== name); // evita duplicados
+  history = history.filter(p => p !== name);
   history.unshift(name);
 
   if (history.length > 10) history.pop();
@@ -91,7 +92,7 @@ function addToHistory(name) {
   renderHistory();
 }
 
-// Renderizar lista
+
 function renderHistory() {
   historyList.innerHTML = "";
 
@@ -113,5 +114,5 @@ function renderHistory() {
   });
 }
 
-// Inicializar
+
 renderHistory();
